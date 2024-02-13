@@ -36,7 +36,7 @@ interface Args extends ConnectArgs, RollupsArgs {
 export const command = "validate";
 export const describe = "Validate notice given its id";
 
-const DEFAULT_URL = "http://localhost:4000/graphql";
+const DEFAULT_URL = "http://localhost:8080/graphql";
 
 export const builder = (yargs: Argv) => {
     // args regarding connecting to provider

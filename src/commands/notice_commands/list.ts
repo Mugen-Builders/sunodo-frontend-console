@@ -21,7 +21,7 @@ interface Args {
 export const command = "list";
 export const describe = "List notices of an input";
 
-const DEFAULT_URL = "http://localhost:4000/graphql";
+const DEFAULT_URL = "http://localhost:8080/graphql";
 
 export const builder = (yargs: Argv) => {
     return yargs

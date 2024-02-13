@@ -25,10 +25,7 @@ import {
 import { Argv } from "yargs";
 import { networks } from "./networks";
 import { Deployment, Contract } from "./abi";
-import {
-    readAddressFromFile,
-    readAllContractsFromDir
-} from "./utils"
+import { readAddressFromFile, readAllContractsFromDir } from "./utils";
 
 export interface Args {
     dapp: string;
@@ -43,8 +40,7 @@ interface Contracts {
     outputContract: CartesiDApp;
     erc20Portal: IERC20Portal;
     erc721Portal: IERC721Portal;
-    deployment: Deployment
-
+    deployment: Deployment;
 }
 
 /**
@@ -73,7 +69,6 @@ export const builder = <T>(yargs: Argv<T>): Argv<Args & T> => {
         });
 };
 
-
 /**
  * Read address from file located at deployment path
  * @param dapp DApp name
@@ -86,10 +81,11 @@ const readDApp = (
 ): string | undefined => {
     const network = networks[chainId];
     if (network && dapp) {
-        return readAddressFromFile(`../deployments/${network.name}/${dapp}.json`);
+        return readAddressFromFile(
+            `./deployments/${network.name}/${dapp}.json`
+        );
     }
 };
-
 
 const readDeployment = (chainId: number, args: Args): Deployment => {
     if (args.deploymentFile) {
@@ -107,12 +103,16 @@ const readDeployment = (chainId: number, args: Args): Deployment => {
         }
 
         if (network.name === "localhost") {
+            const contracts: Record<string, Contract> = readAllContractsFromDir(
+                "./deployments/localhost",
+                "../common-contracts/deployments/localhost"
+            );
 
-            const contracts: Record<string, Contract> =
-                readAllContractsFromDir("../deployments/localhost",
-                    "../common-contracts/deployments/localhost");
-
-            const deployment = { chainId: chainId.toString(), name: "localhost", contracts: contracts };
+            const deployment = {
+                chainId: chainId.toString(),
+                name: "localhost",
+                contracts: contracts,
+            };
             return deployment as Deployment;
         }
 
@@ -165,13 +165,12 @@ export const rollups = async (
         provider
     );
 
-
     return {
         dapp: address,
         inputContract,
         outputContract,
         erc20Portal,
         erc721Portal,
-        deployment
+        deployment,
     };
 };

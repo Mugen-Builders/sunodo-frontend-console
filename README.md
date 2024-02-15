@@ -12,16 +12,9 @@ It's implemented in Typescript and uses the [ethers](https://docs.ethers.io/v5/)
 
 ## Building
 
-To build the console application, first clone the repository as follows:
+Build the application by executing the following commands:
 
 ```shell
-git clone https://github.com/cartesi/rollups-examples.git
-```
-
-Then, build the application by executing the following commands:
-
-```shell
-cd frontend-console/
 yarn
 yarn build
 ```
@@ -59,20 +52,12 @@ yarn start input send --payload [message] <options>
 
 Examples:
 
-1. Send an input to the current locally deployed DApp using Hardhat's default funded account:
+1. Send an input to the current locally deployed dApp using Hardhat's default funded account:
 
     ```shell
     yarn start input send --payload "my message"
     ```
 
-1. Send an input to an instance of the `echo-python` DApp already deployed to the Ethereum Sepolia testnet, using a user's account and a user's gateway RPC on Alchemy:
-
-    ```shell
-    export MNEMONIC=<user sequence of twelve words>
-    export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/<USER_KEY>
-
-    yarn start input send --payload "my message" --dapp echo-python
-    ```
 
 #### Options
 
@@ -117,7 +102,7 @@ Examples:
     yarn start voucher list --input 1
     ```
 
-1. List notices for input `3` of an `echo-python` DApp instance already deployed remotely:
+1. List notices for input `3` dApp instance already deployed remotely:
 
     ```shell
     yarn start notice list --url https://<dapp-cartesi-node-url>/graphql --input 3
@@ -161,7 +146,7 @@ Examples:
     yarn start voucher execute --index 1 --input 3
     ```
 
-1. Validate notice with index `0` of input `5` for an `echo-python` DApp already deployed to the Ethereum Sepolia testnet, using a user's account and a user's gateway RPC on Alchemy:
+1. Validate notice with index `0` of input `5` for DApp already deployed to the Ethereum Sepolia testnet, using a user's account and a user's gateway RPC on Alchemy:
 
     ```shell
     export MNEMONIC=<user sequence of twelve words>
@@ -203,7 +188,7 @@ Examples:
     yarn start inspect --payload "myresource?attr1=value1&attr2=value2"
     ```
 
-1. Inspect the state of the `echo-python` DApp instance already deployed remotely:
+1. Inspect the state of a dApp instance already deployed remotely:
 
     ```shell
     yarn start inspect --payload "mypayload" --url https://<dapp-cartesi-node-url>/inspect
@@ -238,13 +223,13 @@ Examples:
     yarn start erc20 deposit --amount 10000000000000000000
     ```
 
-1. Deposit 10 CTSI in the `echo-python` DApp instance already deployed to the Ethereum Sepolia testnet, using a user's account and a user's gateway RPC on Alchemy:
+1. Deposit 10 CTSI in a dApp instance already deployed to the Ethereum Sepolia testnet, using a user's account and a user's gateway RPC on Alchemy:
 
     ```shell
     export MNEMONIC=<user sequence of twelve words>
     export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/<USER_KEY>
 
-    yarn start erc20 deposit --amount 10000000000000000000 --dapp echo-python
+    yarn start erc20 deposit --amount 10000000000000000000 
     ```
 
 Options are:
@@ -277,13 +262,13 @@ Examples:
     yarn start erc721 deposit --tokenId 1
     ```
 
-1. Deposit token with id `1` in the `echo-python` DApp instance already deployed to the Ethereum Sepolia testnet, using a user's account and a user's gateway RPC on Alchemy:
+1. Deposit token with id `1` in a dApp instance already deployed to the Ethereum Sepolia testnet, using a user's account and a user's gateway RPC on Alchemy:
 
     ```shell
     export MNEMONIC=<user sequence of twelve words>
     export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/<USER_KEY>
 
-    yarn start erc721 deposit --tokenId 1 --dapp echo-python
+    yarn start erc721 deposit --tokenId 1 
     ```
 
 Options are:
